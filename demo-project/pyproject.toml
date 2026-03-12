@@ -1,0 +1,10 @@
+[project]
+name = "demo-project"
+version = "0.1.0"
+description = "GSS Dev Startup UV Demo Project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "pandas>=3.0.1",
+]
