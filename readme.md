@@ -17,13 +17,13 @@ Working with others
 Running using uv  
 
 
-## Part 3
-Managing secrets (.env, github)  
-Using python-dotenv  
-.gitignore best practices  
+## Part 3 [.env starter](/docs/env-starter.md)
+What not to do
+Environment variables overview
+Terminal and Python dotenv
 
 ## Part 4
-Debugging  
+Debugging?  
 
 
 Other Future Ideas
