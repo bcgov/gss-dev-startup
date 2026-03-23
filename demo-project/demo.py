@@ -1,9 +1,9 @@
 import pandas
-import dotenv
 import os
 
 # new for .env example
 from dotenv import load_dotenv
+
 load_dotenv()
 
 print ("Hello Demo")
