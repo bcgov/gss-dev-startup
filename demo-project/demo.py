@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 print ("Hello Demo")
-print("Test")
 
 key =True if os.getenv('API_KEY') else False
 print (f"API_KEY exists: {key}")
