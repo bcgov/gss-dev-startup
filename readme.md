@@ -23,7 +23,24 @@ Environment variables overview
 Terminal and Python dotenv  
 
 ## Part 4
-Debugging?  
+Debugging with VSCode  
+UI, breakpoints, stepping, watchlist  
+Debug console  
+Code launch config  
+
+Example Debug Config with args and env file
+```json
+        {
+            "name": "Python Debugger: Demo args and envFile",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["1","2","3","4","5"],
+            "envFile": "${workspaceFolder}/.env"
+        }
+```
+
 
 
 Other Future Ideas
