@@ -22,7 +22,7 @@ What not to do
 Environment variables overview  
 Terminal and Python dotenv  
 
-## Part 4
+## Part 4 Debug'n with VSCode
 Debugging with VSCode  
 UI, breakpoints, stepping, watchlist  
 Debug console  
