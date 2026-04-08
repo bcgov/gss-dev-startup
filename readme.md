@@ -41,6 +41,11 @@ Example Debug Config with args and env file
         }
 ```
 
+## Part 5? Podman
+Installation of Podman Podman Compose
+Starting big with PostGIS
+
+
 
 
 Other Future Ideas
