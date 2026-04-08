@@ -42,11 +42,11 @@ Example Debug Config with args and env file
 ```
 
 ## Part 5? [Podman](/docs/podman-starter.md)
-Installation of Podman Podman Compose
-Starting big with PostGIS
-Run container
-Stop container
-Delete container
+Installation of Podman Podman Compose  
+Starting big with PostGIS  
+Run container  
+Stop container  
+Delete container  
 
 
 
