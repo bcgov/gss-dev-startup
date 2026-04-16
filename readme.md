@@ -41,14 +41,19 @@ Example Debug Config with args and env file
         }
 ```
 
-## Part 5? [Podman](/docs/podman-starter.md)
+## Part 5 [Podman](/docs/podman-starter.md)
 Installation of Podman Podman Compose  
 Starting big with PostGIS  
 Run container  
 Stop container  
 Delete container  
 
+## Part 6 Frontend
+Read
+- [fundamentals](/docs/frontend-fundamentals.md)
+- [react intro](/docs/frontend-react-intro.md)
 
+Then tempt your fate with [the final boss - frontend with react typescript](/docs/frontend-starter.md)
 
 Other Future Ideas
 -----------------
