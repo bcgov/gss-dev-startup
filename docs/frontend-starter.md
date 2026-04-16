@@ -178,7 +178,7 @@ Components allows for modular design and code reuse. For example, lets create a 
     }
     ```
 3. Add some style **src/index.css**
-    ```
+    ```css
     @import "@bcgov/bc-sans/css/BCSans.css";
     body { font-family: 'BCSans', sans-serif; margin: 0; background-color: #f2f2f2; }
     ```
