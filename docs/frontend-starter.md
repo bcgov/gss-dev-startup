@@ -17,89 +17,122 @@ Engaging in activities where you don't excel can actually be beneficial; it buil
 3. Create your project directory  
     ```shell
     mkdir demo-react-frontend
+    cd demo-react-frontend
     ```
 4. Use npm to initialize your project
     ```shell
     npm init -y
     ```
     ✅ Checkpoint: package.json exists, npm commands work
-5. This is the structure we should end up with
+5. This is the structure we should end up with after we complete this starter.
     ```
     demo-react-frontend/
     ├─ public/
+    │   └── index.html
     ├─ src/
-    ├─ webpack.config.js
+       ├── index.tsx
+       ├── index.css
+       ├── App.tsx
+       ├── declarations.d.ts
+       └── components/
+                └── Header.tsx
+
+    ├─ webpack.config.cjs
     ├─ tsconfig.json
     └─ package.json
+    |
+    └── node_modules # created by node (don't commit -- see .gitignore)
     ```
 
 ## Minimal Setup (Webpack + Typescript + React)
 1. Install core dependencies(these are installed for this project):
     ```shell
-    # Install Webpack and TypeScript plumbing
     npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader html-webpack-plugin css-loader style-loader
-    # Install React and React router
+    ```
+    install React things
+    ```shell
     npm install react@18 react-dom@18 react-router-dom
+    ```
+    ```shell
     npm install --save-dev @types/react @types/react-dom
-    # install bc-sans
+    ```
+    install Sass loader
+    ```shell
+    npm install --save-dev sass sass-loader
+    ```
+
+    install bc-sans
+    ```shell
     npm install @bcgov/bc-sans
     ```
 
 ## Configuration
 
-1. Create **package.json** in the root project folder(/demo-react-frontend)
+1. Modify the  **package.json** in the root project folder(/demo-react-frontend). Remvove the test value and add the start value --like below
     ```json
     {
-    "name": "demo-react-frontend",
-    "version": "1.0.0",
-    "type": "module",
+
     "scripts": {
         "start": "webpack serve --mode development --config webpack.config.cjs"
     }
     }
     ```
 2. Create **tsconfig.json** in the root project folder(/demo-react-frontend)
-    ```json
-    {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "bundler",
-        "jsx": "react-jsx",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "allowImportingTsExtensions": true,
-        "noEmit": true
-    },
-    "include": ["src"]
-    }
-    ```
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}
+```
 3. Create a file named **webpack.config.cjs** in your root directory. This tells Webpack how to handle .ts and .css files.  
 
-    ```JavaScript
-    const path = require('path');
-    const HtmlWebpackPlugin = require('html-webpack-plugin');
+```JavaScript
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-    module.exports = {
-    entry: './src/index.tsx',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        clean: true
-    },
-    resolve: { extensions: ['.ts', '.tsx', '.js'] },
-    module: {
-        rules: [
-        { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/ },
-        { test: /\.css$/, use: ['style-loader', 'css-loader'] }
-        ]
-    },
-    plugins: [ new HtmlWebpackPlugin({ template: './public/index.html' }) ],
-    devServer: { port: 3000, historyApiFallback: true }
-    };
-    ```
+module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    clean: true
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
+  ],
+  devServer: {
+    port: 3000,
+    historyApiFallback: true
+  }
+};
+```
 
 ## Make some 🩻 content
 1. Create a ```public/index.html```. This is the only HTML file the browser actually loads; Webpack will inject our script here.:
@@ -125,19 +158,19 @@ Engaging in activities where you don't excel can actually be beneficial; it buil
     ```
 
 3. Create your first typescript **src/App.tsx**
-    ```typescript
-    // src/App.tsx
-    export default function App() {
-    
-    return (
-        <>
-        <div style={{ padding: '40px' }}>
-            <h1>Hello World</h1>
-        </div>
-        </>
-    );
-    }
-    ```
+```typescript
+// src/App.tsx
+export default function App() {
+
+return (
+    <>
+    <div style={{ padding: '40px' }}>
+        <h1>Hello World</h1>
+    </div>
+    </>
+);
+}
+```
 
     Test your frontend
     ```shell
@@ -145,19 +178,28 @@ Engaging in activities where you don't excel can actually be beneficial; it buil
     ```
     The app will open at http://localhost:3000.
 
+    Try changing your html in App.tsx, notice the live changes using the dev server.
+
 ## Components & Branding
 Components allows for modular design and code reuse. For example, lets create a header that will allow all headers in your frontend to be the same.
 
 
 1. **src/components/Header.tsx**
-    ```
+    ```typescript
+    //src/components/Header.tsx
     export const Header = () => (
     <header style={{ backgroundColor: '#003366', color: 'white', padding: '10px 30px', borderBottom: '2px solid #fcba19', display: 'flex', alignItems: 'center' }}>
-        <img src="https://www2.gov.bc.ca/assets/download/b9ea990680374e50882e987fd762e811/images/gov_bc_logo.svg" alt="BC Logo" width="150" />
+        <img src="https://www.arcgis.com/sharing/rest/content/items/d1db1a16d84d407da7d605805c34dc7e/data" alt="BC Logo" width="150" />
         <h2 style={{ marginLeft: '20px' }}>Frontend Training</h2>
     </header>
     );
     ```
+2. create TypeScript Declarations **src/declarations.d.ts** -- this makes it so you can reference css and scss file types
+```typescript
+declare module '*.css';
+declare module '*.scss';
+```
+
 2. Update your app to include the header   
     **src/App.tsx**
     ```typescript
@@ -177,7 +219,7 @@ Components allows for modular design and code reuse. For example, lets create a 
     );
     }
     ```
-3. Add some style **src/index.css**
+3. Add some style **src/index.scss**
     ```css
     @import "@bcgov/bc-sans/css/BCSans.css";
     body { font-family: 'BCSans', sans-serif; margin: 0; background-color: #f2f2f2; }

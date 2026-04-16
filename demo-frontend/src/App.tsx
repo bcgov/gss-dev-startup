@@ -1,9 +1,13 @@
-const App = () => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-      <p>If you see this, Webpack and TypeScript are working!</p>
+import { Header } from './components/Header';
+import './index.scss';
+export default function App() {
+
+return (
+    <>
+    <Header />
+    <div style={{ padding: '40px' }}>
+        <h1>Hello World</h1>
     </div>
-  );
-};
-export default App;
+    </>
+);
+}
