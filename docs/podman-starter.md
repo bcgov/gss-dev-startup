@@ -36,6 +36,22 @@ Your data will not be retained when we stop this. If you want to keep it... add 
 ```bash
 -v postgis_data:/var/lib/postgresql/data
 ```
+---
+**special note:**  
+if you have an error where the image postgis/postgis can not be resolved you can do one of two things.
+1. Add docker.io infront of the image 
+```bash
+podman run \
+  --name my-gss-postgis \
+  -e POSTGRES_PASSWORD=fossrocks \
+  -p 5432:5432 \
+  -d docker.io/postgis/postgis
+```
+2. or add docker.io to your podman configuration
+- edit ```/etc/containers/registries.conf```
+- find the line ```# # An array of host[:port] registries to try when pulling an unqualified image, in order.```
+- add this below it ```unqualified-search-registries = ["docker.io"]```
+---
 
 Check your container named <b>my-gss-postgis</b> is running
 ```bash
